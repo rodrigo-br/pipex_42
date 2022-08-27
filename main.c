@@ -63,6 +63,7 @@ int main (int argc, char **argv, char **envp)
 	pipata.cmds = pick_commands(argc, argv, &pipata);
 	pick_path(envp, &pipata);
 	open_pipex_files(&pipata);
-	katchau(argc, argv, envp, pipata);
+	pipe_na_pipata(&pipata);
+	// katchau(argc, argv, envp, pipata);
 	return (0);
 }
