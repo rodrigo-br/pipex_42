@@ -6,7 +6,7 @@
 /*   By: ralves-b <ralves-b@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 17:03:32 by ralves-b          #+#    #+#             */
-/*   Updated: 2022/08/27 17:36:15 by ralves-b         ###   ########.fr       */
+/*   Updated: 2022/08/27 23:57:47 by ralves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ void	pipe_na_pipata(t_pipex_data *pipata)
 	}
 	if (pipata->fork_id[0] == 0)
 	{
+		dup2(pipata->input_fd, STDIN_FILENO);
 		dup2(pipata->fd[1], STDOUT_FILENO);
 		close(pipata->fd[0]);
 		close(pipata->fd[1]);
 		execve(pipata->cmds[0], pipata->files, NULL);
 	}
+	waitpid(pipata->fork_id[0], NULL, 0);
 	pipata->fork_id[1] = fork();
 	if (pipata->fork_id[1] < 0)
 	{
@@ -45,6 +47,7 @@ void	pipe_na_pipata(t_pipex_data *pipata)
 		close(pipata->fd[1]);
 		execve(pipata->cmds[1], pipata->files, NULL);
 	}
-	waitpid(pipata->fork_id[0], NULL, 0);
+	close(pipata->fd[0]);
+	close(pipata->fd[1]);
 	waitpid(pipata->fork_id[1], NULL, 0);
 }
