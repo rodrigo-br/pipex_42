@@ -1,9 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex_data.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ralves-b <ralves-b@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/27 02:59:31 by ralves-b          #+#    #+#             */
+/*   Updated: 2022/08/27 02:59:33 by ralves-b         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
 void	init_data(t_pipex_data *pipata)
 {
 	pipata->fork_id[0] = -1;
 	pipata->fork_id[1] = -1;
+	pipata->input_fd = -1;
+	pipata->output_fd = -1;
 	pipata->fd[0] = -1;
 	pipata->fd[1] = -1;
 	pipata->cmds = NULL;

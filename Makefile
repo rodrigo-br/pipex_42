@@ -1,4 +1,4 @@
-SRCS	=	errors.c pipex_data.c
+SRCS	=	errors.c pipex_data.c open_pipex_files.c
 
 OBJS	=	${SRCS:.c=.o}
 
