@@ -6,7 +6,7 @@
 /*   By: ralves-b <ralves-b@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 02:59:31 by ralves-b          #+#    #+#             */
-/*   Updated: 2022/08/29 03:50:23 by ralves-b         ###   ########.fr       */
+/*   Updated: 2022/08/29 03:56:53 by ralves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void	pick_path(char **envp, t_pipex_data *p)
 int	fill_data(const char **argv, char **envp, t_pipex_data *p)
 {
 	p->infile = open(argv[1], O_RDONLY);
-    p->outfile = open(argv[4], O_CREAT | O_RDWR | O_TRUNC, 0644);
-    if (p->infile < 0 || p->outfile < 0)
-		return(perror("ERRO NO ARQUIVO"), 0);
+	p->outfile = open(argv[4], O_CREAT | O_RDWR | O_TRUNC, 0644);
+	if (p->infile < 0 || p->outfile < 0)
+		return (perror("ERRO NO ARQUIVO"), 0);
 	p->cmd_1 = ft_split(argv[2], ' ');
 	p->cmd_2 = ft_split(argv[3], ' ');
 	pick_path(envp, p);

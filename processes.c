@@ -6,7 +6,7 @@
 /*   By: ralves-b <ralves-b@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 03:38:06 by ralves-b          #+#    #+#             */
-/*   Updated: 2022/08/29 03:38:19 by ralves-b         ###   ########.fr       */
+/*   Updated: 2022/08/29 03:57:17 by ralves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	child_process(t_pipex_data *p)
 	dup2(p->pipe[1], STDOUT_FILENO);
 	close(p->pipe[0]);
 	close(p->infile);
-	while(p->paths[++i])
+	while (p->paths[++i])
 	{
 		cmd = ft_strjoin(p->paths[i], p->cmd_1[0]);
 		execve(cmd, p->cmd_1, p->paths);
@@ -43,7 +43,7 @@ void	parent_process(t_pipex_data *p)
 	dup2(p->pipe[0], STDIN_FILENO);
 	close(p->pipe[1]);
 	close(p->outfile);
-	while(p->paths[++i])
+	while (p->paths[++i])
 	{
 		cmd = ft_strjoin(p->paths[i], p->cmd_2[0]);
 		execve(cmd, p->cmd_2, p->paths);
