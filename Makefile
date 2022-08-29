@@ -18,6 +18,7 @@ $(NAME):	${OBJS} ${H_SRC}
 			make -C ./libft_42
 			mv ./libft_42/libft.a ./$(NAME)
 			ar -rcs $@ $^
+			cc main.c libft.a -o pipex
 
 all: 		${NAME}
 

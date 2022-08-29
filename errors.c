@@ -6,7 +6,7 @@
 /*   By: ralves-b <ralves-b@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:35:20 by ralves-b          #+#    #+#             */
-/*   Updated: 2022/08/29 17:49:26 by ralves-b         ###   ########.fr       */
+/*   Updated: 2022/08/29 18:42:40 by ralves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	check_argc_error(int n)
 {
 	if (n != 5)
 	{
-		write(2, "Invalid number of arguments\n", 28);
-		exit(69);
+		write(2, "bash: syntax error\n", 19);
+		exit(2);
 	}
 }
 

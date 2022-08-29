@@ -6,7 +6,7 @@
 /*   By: ralves-b <ralves-b@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 02:59:31 by ralves-b          #+#    #+#             */
-/*   Updated: 2022/08/29 17:36:43 by ralves-b         ###   ########.fr       */
+/*   Updated: 2022/08/29 19:27:50 by ralves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,20 @@ void	pick_path(char **envp, t_pipex_data *p)
 		p->paths[i] = ft_strjoin(temp[i], "/");
 }
 
-int	fill_data(const char **argv, char **envp, t_pipex_data *p)
+void	fill_data(const char **argv, char **envp, t_pipex_data *p)
 {
-	if (access(argv[1], F_OK) == 0)
-		p->infile = open(argv[1], O_RDONLY);
-	else
-		return (write(2, "bash: ", 6), perror(argv[1]), 0);
+	p->erro = -2;
+	p->erro_2 = 0;
+	p->infile = open(argv[1], O_RDONLY);
+	if (p->infile == -1)
+	{
+		p->erro_2 = 1;
+		p->infile = open("/dev/null", O_RDONLY);
+		write(2, "bash: ", 6);
+		perror(argv[1]);
+	}
 	p->outfile = open(argv[4], O_CREAT | O_RDWR | O_TRUNC, 0644);
-	if (p->infile < 0 || p->outfile < 0)
-		return (write(2, "bash: ", 6), perror(argv[4]), 0);
 	p->cmd_1 = ft_split(argv[2], ' ');
 	p->cmd_2 = ft_split(argv[3], ' ');
-	p->erro = -2;
 	pick_path(envp, p);
-	return (1);
 }

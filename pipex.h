@@ -6,7 +6,7 @@
 /*   By: ralves-b <ralves-b@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 23:27:06 by ralves-b          #+#    #+#             */
-/*   Updated: 2022/08/29 17:46:30 by ralves-b         ###   ########.fr       */
+/*   Updated: 2022/08/29 19:24:05 by ralves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,14 @@ typedef struct s_pipex_data
 	char	**cmd_1;
 	char	**cmd_2;
 	int		erro;
+	int		erro_2;
 }	t_pipex_data;
 
 void	check_argc_error(int n);
 void	pipex(t_pipex_data *p);
 void	parent_process(t_pipex_data *p);
 void	child_process(t_pipex_data *p);
-int		fill_data(const char **argv, char **envp, t_pipex_data *p);
+void	fill_data(const char **argv, char **envp, t_pipex_data *p);
 void	ft_perror(char *msg, int erro);
 void	access_errors(t_pipex_data *p, char **parent_cmd);
 

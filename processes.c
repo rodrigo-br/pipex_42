@@ -6,7 +6,7 @@
 /*   By: ralves-b <ralves-b@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 03:38:06 by ralves-b          #+#    #+#             */
-/*   Updated: 2022/08/29 17:51:28 by ralves-b         ###   ########.fr       */
+/*   Updated: 2022/08/29 19:28:50 by ralves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@ void	child_process(t_pipex_data *p)
 	char	*cmd;
 
 	i = -1;
+	if (p->erro_2)
+	{
+		dup2(p->infile, p->pipe[1]);
+		close(p->infile);
+		close(p->pipe[0]);
+		return ;
+	}
 	access_errors(p, p->cmd_1);
 	dup2(p->infile, STDIN_FILENO);
 	dup2(p->pipe[1], STDOUT_FILENO);
