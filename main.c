@@ -6,14 +6,14 @@
 /*   By: ralves-b <ralves-b@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 03:57:42 by ralves-b          #+#    #+#             */
-/*   Updated: 2022/08/29 19:29:01 by ralves-b         ###   ########.fr       */
+/*   Updated: 2022/08/29 19:48:42 by ralves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 #include <stdio.h>
 
-int	main(int argc, const char **argv, char **envp)
+int	main(int argc, char **argv, char **envp)
 {
 	t_pipex_data	p;
 
