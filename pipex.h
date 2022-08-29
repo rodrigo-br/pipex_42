@@ -6,7 +6,7 @@
 /*   By: ralves-b <ralves-b@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 23:27:06 by ralves-b          #+#    #+#             */
-/*   Updated: 2022/08/27 17:22:36 by ralves-b         ###   ########.fr       */
+/*   Updated: 2022/08/29 01:31:13 by ralves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 
 typedef struct s_pipex_data
 {
-	int		fork_id[2];
+	pid_t	fork_id[2];
 	int		fd[2];
-	int		input_fd;
 	int		output_fd;
+	int		input_fd;
 	char	**paths;
-	char	**cmds;
-	char	**files;
+	char	*cmd_1;
+	char	*cmd_2;
 }	t_pipex_data;
 
 void	check_argc_error(int n);
