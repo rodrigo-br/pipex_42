@@ -6,7 +6,7 @@
 /*   By: ralves-b <ralves-b@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 23:27:06 by ralves-b          #+#    #+#             */
-/*   Updated: 2022/08/29 20:48:26 by ralves-b         ###   ########.fr       */
+/*   Updated: 2022/08/29 21:49:52 by ralves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_rev_spc
 	size_t	i;
 	int		word;
 	int		value;
-	int		mapper;
+	int		map;
 }	t_rev_spc;
 
 void	check_argc_error(int n);

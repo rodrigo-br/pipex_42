@@ -6,7 +6,7 @@
 /*   By: ralves-b <ralves-b@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 02:59:31 by ralves-b          #+#    #+#             */
-/*   Updated: 2022/08/29 20:48:35 by ralves-b         ###   ########.fr       */
+/*   Updated: 2022/08/29 21:50:12 by ralves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ void	revert_space(char **str, t_rev_spc rs)
 				if (str[rs.word][rs.i] == 1)
 				{
 					str[rs.word][rs.i] = ' ';
-					if (rs.mapper == -1)
-						rs.mapper = rs.word;
+					if (rs.map == -1)
+						rs.map = rs.word;
 				}
 			}
 		}
 		rs.word++;
 	}
-	if (rs.mapper != -1)
-		str[rs.mapper] = ft_substr(str[rs.mapper], 1, ft_strlen(str[rs.mapper]) - 2);
+	if (rs.map != -1)
+		str[rs.map] = ft_substr(str[rs.map], 1, ft_strlen(str[rs.map]) - 2);
 }
 
 void	pick_path(char **envp, t_pipex_data *p)
@@ -89,7 +89,7 @@ void	fill_data(char **argv, char **envp, t_pipex_data *p)
 	t_rev_spc	rs;
 
 	rs.word = 0;
-	rs.mapper = -1;
+	rs.map = -1;
 	p->erro = -2;
 	p->erro_2 = 0;
 	p->infile = open(argv[1], O_RDONLY);
