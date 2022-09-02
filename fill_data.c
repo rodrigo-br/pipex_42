@@ -6,7 +6,7 @@
 /*   By: ralves-b <ralves-b@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 02:59:31 by ralves-b          #+#    #+#             */
-/*   Updated: 2022/08/29 21:50:12 by ralves-b         ###   ########.fr       */
+/*   Updated: 2022/09/02 15:41:04 by ralves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,10 @@ void	revert_space(char **str, t_rev_spc rs)
 		str[rs.map] = ft_substr(str[rs.map], 1, ft_strlen(str[rs.map]) - 2);
 }
 
-void	pick_path(char **envp, t_pipex_data *p)
+void	pick_path(char **envp, t_pipex_data *p, int i)
 {
-	int		i;
 	char	**temp;
 
-	i = 0;
 	temp = NULL;
 	while (envp[i])
 	{
@@ -81,7 +79,11 @@ void	pick_path(char **envp, t_pipex_data *p)
 	p->paths = (char **)malloc((i + 1) * sizeof(*temp));
 	p->paths[i] = NULL;
 	while (i--)
+	{
 		p->paths[i] = ft_strjoin(temp[i], "/");
+		free(temp[i]);
+	}
+	free(temp);
 }
 
 void	fill_data(char **argv, char **envp, t_pipex_data *p)
@@ -107,5 +109,5 @@ void	fill_data(char **argv, char **envp, t_pipex_data *p)
 	p->cmd_2 = ft_split(argv[3], ' ');
 	revert_space(p->cmd_1, rs);
 	revert_space(p->cmd_2, rs);
-	pick_path(envp, p);
+	pick_path(envp, p, 0);
 }

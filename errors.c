@@ -6,7 +6,7 @@
 /*   By: ralves-b <ralves-b@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:35:20 by ralves-b          #+#    #+#             */
-/*   Updated: 2022/08/29 18:42:40 by ralves-b         ###   ########.fr       */
+/*   Updated: 2022/09/02 15:38:05 by ralves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	access_errors(t_pipex_data *p, char **parent_cmd)
 		cmd = ft_strjoin(p->paths[i], parent_cmd[0]);
 		if (!access(cmd, F_OK))
 			p->erro = access(cmd, X_OK);
+		free(cmd);
 	}
 	if (p->erro == -2)
 	{
